@@ -30,12 +30,22 @@ class login {
     }
     
      public boolean checkPasswordComplexity() {
-        String regex = "^(?=.[A-Z])(?=.[a-z])(?=.\\d)(?=.[@$!%?&])[A-Za-z\\d@$!%?&]{8,}$";
+        String regex = "^(?=.[A-Z])(?=.[a-z])(?=.\\d()?=.[@$!%?&])[A-Za-z\\d@$!%?&]{8,}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(password);
         return matcher.matches();
      }
+        public String registerUser() {
+        if (!checkUserName()) {
+            return "Username is not correctly formatted, please ensure that your username contains an underscore and is no more than 5 characters in length.";
+        } else if (!checkPasswordComplexity()) {
+            return "Password is not correctly formatted, please ensure that the password contains at least 8 characters, a capital letter, a number, and a special character.";
+        } else {
+            return "User successfully registered.";
+        }
+        }
 }
+
 
     
 

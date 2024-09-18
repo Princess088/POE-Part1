@@ -26,7 +26,8 @@ import java.util.Scanner;
 
         System.out.print("Enter last name: ");
         String lastName = scanner.next();
-
+        
+        login login = new login(username, password, firstName, lastName);
         System.out.println(login.registerUser());
 
         System.out.print("Enter username to login: ");
