@@ -15,7 +15,7 @@ import java.util.Scanner;
         //Create an object for scanner
         Scanner scanner = new Scanner(System.in);
         
-  System.out.print("Enter username: ");
+        System.out.print("Enter username: ");
         String username = scanner.next();
 
         System.out.print("Enter password: ");
