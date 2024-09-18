@@ -35,7 +35,7 @@ class login {
         Matcher matcher = pattern.matcher(password);
         return matcher.matches();
      }
-        public String registerUser() {
+     public String registerUser() {
         if (!checkUserName()) {
             return "Username is not correctly formatted, please ensure that your username contains an underscore and is no more than 5 characters in length.";
         } else if (!checkPasswordComplexity()) {
@@ -44,9 +44,15 @@ class login {
             return "User successfully registered.";
         }
         }
+          public boolean loginUser(String username, String password) {
+        return this.username.equals(username) && this.password.equals(password);
+    }
+
+    public String returnLoginStatus(boolean loginStatus) {
+        if (loginStatus) {
+            return "Welcome " + firstName + " " + lastName + ", it is great to see you again.";
+        } else {
+            return "Username or password incorrect, please try again.";
+        }
+    }
 }
-
-
-    
-
-
