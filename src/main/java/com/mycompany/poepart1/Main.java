@@ -12,7 +12,7 @@ import java.util.Scanner;
         public class Main {
     public static void main(String[] args){
          //Create an object for login
-        login login = new Login();
+        Login login = new Login();
         //Create an object for scanner
         Scanner scanner = new Scanner(System.in);
 
