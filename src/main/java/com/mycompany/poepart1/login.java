@@ -16,12 +16,32 @@ class login {
     private String password;
     private String firstName;
     private String lastName;
-
+    
     public login(String username, String password, String firstName, String lastName) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+     // Getter for username
+    public String getUsername() {
+        return username;
+    }
+
+    // Getter for password
+    public String getPassword() {
+        return password;
+    }
+
+    // Getter for firstName
+    public String getFirsName() {
+        return firstName;
+    }
+
+    // Getter for lastName
+    public String getLastName() {
+        return lastName;
     }
 
      public boolean checkUserName() {
@@ -35,7 +55,7 @@ class login {
         Matcher matcher = pattern.matcher(password);
         return matcher.matches();
      }
-     public String registerUser() {
+     public String registerUser(String username1, String password1, String firstName1, String lastName1) {
         if (!checkUserName()) {
             return "Username is not correctly formatted, please ensure that your username contains an underscore and is no more than 5 characters in length.";
         } else if (!checkPasswordComplexity()) {
