@@ -12,7 +12,7 @@ import java.util.Scanner;
         public class Main {
     public static void main(String[] args){
          //Create an object for login
-        Login login = new Login();
+       
         //Create an object for scanner
         Scanner scanner = new Scanner(System.in);
 
@@ -25,17 +25,13 @@ import java.util.Scanner;
         String firstName = scanner.next();
         System.out.print("Enter last name: ");
         String lastName = scanner.next();
+        
+         Login login = new Login(username, password, firstName, lastName);
+        System.out.println(login.registerUser());
 
-        String registrationMessage = login.registerUser(username, password, firstName, lastName);
-        System.out.println(registrationMessage);
+        
 
-        System.out.print("Enter username: ");
-        username = scanner.next();
-        System.out.print("Enter password: ");
-        password = scanner.next();
-
-        boolean loginStatus = login.loginUser(username, password);
-        System.out.println(login.returnLoginStatus(loginStatus));
-
+       
+    }
         }
-        }
+
