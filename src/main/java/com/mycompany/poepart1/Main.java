@@ -27,9 +27,16 @@ import java.util.Scanner;
         String lastName = scanner.next();
         
          Login login = new Login(username, password, firstName, lastName);
-        System.out.println(login.registerUser());
+        System.out.print(login.registerUser());
 
-        
+          System.out.print("Login with username:");
+        String inputUsername = scanner.next();
+        System.out.print("Login with password:");
+        String inputPassword = scanner.next();
+
+        boolean loginSuccess = login.loginUser(inputUsername, inputPassword);
+        System.out.println(login.returnLoginStatus(loginSuccess));
+
 
        
     }
