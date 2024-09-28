@@ -17,14 +17,15 @@ import java.util.Scanner;
         Scanner scanner = new Scanner(System.in);
 
         //Prompt the user to enter their details
-        System.out.print("Enter username: ");
-        String username = scanner.next();
-        System.out.print("Enter password: ");
-        String password = scanner.next();
         System.out.print("Enter first name: ");
         String firstName = scanner.next();
         System.out.print("Enter last name: ");
         String lastName = scanner.next();
+        System.out.print("Enter username: ");
+        String username = scanner.next();
+        System.out.print("Enter password: ");
+        String password = scanner.next();
+        
         
          Login login = new Login(username, password, firstName, lastName);
         System.out.print(login.registerUser());

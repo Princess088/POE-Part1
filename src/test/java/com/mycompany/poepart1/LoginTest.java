@@ -1,127 +1,89 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
  */
 package com.mycompany.poepart1;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
  * @author RC_Student_lab
  */
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+
 public class LoginTest {
-    
-    public LoginTest() {
+
+    @Test
+    public void testCheckUserNameCorrect() {
+        Login login = new Login("kyl_1", "Ch&&sec@ke99!", "John", "Doe");
+        assertTrue(login.checkUserName());
     }
 
-    @org.junit.jupiter.api.BeforeAll
-    public static void setUpClass() throws Exception {
+    @Test
+    public void testCheckUserNameIncorrect() {
+        Login login = new Login("kyle!!!!!!!", "Ch&&sec@ke99!", "John", "Doe");
+        assertFalse(login.checkUserName());
     }
 
-    @org.junit.jupiter.api.AfterAll
-    public static void tearDownClass() throws Exception {
+    @Test
+    public void testCheckPasswordComplexityCorrect() {
+        Login login = new Login("kyl_1", "Ch&&sec@ke99!", "John", "Doe");
+        assertTrue(login.checkPasswordComplexity());
     }
 
-    @org.junit.jupiter.api.BeforeEach
-    public void setUp() throws Exception {
+    @Test
+    public void testCheckPasswordComplexityIncorrect() {
+        Login login = new Login("kyl_1", "password", "John", "Doe");
+        assertFalse(login.checkPasswordComplexity());
     }
 
-    @org.junit.jupiter.api.AfterEach
-    public void tearDown() throws Exception {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
+    @Test
+    public void testRegisterUserSuccess() {
+        Login login = new Login("kyl_1", "Ch&&sec@ke99!", "John", "Doe");
+        assertEquals("User registered successfully.", login.registerUser());
     }
 
-    /**
-     * Test of checkUserName method, of class Login.
-     */
-    @org.junit.jupiter.api.Test
-    public void testCheckUserName() {
-        System.out.println("checkUserName");
-        String instance = "ky_1";
-        boolean expResult = false;
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    @Test
+    public void testRegisterUserUsernameIncorrect() {
+        Login login = new Login("kyle!!!!!!!", "Ch&&sec@ke99!", "John", "Doe");
+        assertEquals("Username is not correctly formatted, please ensure that your username contains an underscore and is no more than 5 characters in length.", login.registerUser());
     }
 
-    /**
-     * Test of checkPasswordComplexity method, of class Login.
-     */
-    @org.junit.jupiter.api.Test
-    public void testCheckPasswordComplexity() {
-        System.out.println("checkPasswordComplexity");
-        Login instance = null;
-        boolean expResult = false;
-        boolean result = instance.checkPasswordComplexity();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    @Test
+    public void testRegisterUserPasswordIncorrect() {
+        Login login = new Login("kyl_1", "password", "John", "Doe");
+        assertEquals("Password is not correctly formatted, please ensure that the password contains at least 8 characters, a capital letter, a number and a special character.", login.registerUser());
     }
 
-    /**
-     * Test of registerUser method, of class Login.
-     */
-    @org.junit.jupiter.api.Test
-    public void testRegisterUser() {
-        System.out.println("registerUser");
-        Login instance = null;
-        String expResult = "";
-        String result = instance.registerUser();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    @Test
+    public void testLoginUserSuccess() {
+        Login login = new Login("kyl_1", "Ch&&sec@ke99!", "John", "Doe");
+        assertTrue(login.loginUser("kyl_1", "Ch&&sec@ke99!"));
     }
 
-    /**
-     * Test of loginUser method, of class Login.
-     */
-    @org.junit.jupiter.api.Test
-    public void testLoginUser() {
-        System.out.println("loginUser");
-        String inputUsername = "";
-        String inputPassword = "";
-        Login instance = null;
-        boolean expResult = false;
-        boolean result = instance.loginUser(inputUsername, inputPassword);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    @Test
+    public void testLoginUserFailure() {
+        Login login = new Login("kyl_1", "Ch&&sec@ke99!", "John", "Doe");
+        assertFalse(login.loginUser("kyle", "password"));
     }
 
-    /**
-     * Test of returnLoginStatus method, of class Login.
-     */
-    @org.junit.jupiter.api.Test
-    public void testReturnLoginStatus() {
-        System.out.println("returnLoginStatus");
-        boolean success = false;
-        Login instance = null;
-        String expResult = "";
-        String result = instance.returnLoginStatus(success);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    @Test
+    public void testReturnLoginStatusSuccess() {
+        Login login = new Login("kyl_1", "Ch&&sec@ke99!", "John", "Doe");
+        assertEquals("Welcome John Doe it is great to see you again.", login.returnLoginStatus(true));
     }
-    
+
+    @Test
+    public void testReturnLoginStatusFailure() {
+        Login login = new Login("kyl_1", "Ch&&sec@ke99!", "John", "Doe");
+        assertEquals("Username or password incorrect, please try again.", login.returnLoginStatus(false));
+    }
 }
+  
