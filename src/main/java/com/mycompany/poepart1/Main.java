@@ -11,8 +11,6 @@ import java.util.Scanner;
  */
         public class Main {
     public static void main(String[] args){
-         //Create an object for login
-       
         //Create an object for scanner
         Scanner scanner = new Scanner(System.in);
 
@@ -26,15 +24,17 @@ import java.util.Scanner;
         System.out.print("Enter password: ");
         String password = scanner.next();
         
-        
-         Login login = new Login(username, password, firstName, lastName);
+        //An object for Login
+        Login login = new Login(username, password, firstName, lastName);
         System.out.print(login.registerUser());
-
-          System.out.print("Login with username:");
+        
+        //Method for the user to log in with after being registered
+        System.out.print("Login with username:");
         String inputUsername = scanner.next();
         System.out.print("Login with password:");
         String inputPassword = scanner.next();
-
+        
+        //Implementation of method above
         boolean loginSuccess = login.loginUser(inputUsername, inputPassword);
         System.out.println(login.returnLoginStatus(loginSuccess));
 
