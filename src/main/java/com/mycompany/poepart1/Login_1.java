@@ -56,7 +56,7 @@ class Login {
     //Determines whether the login was successful or not
     public String returnLoginStatus(boolean success) {
         if (success) {
-            return "Welcome, " + firstName + " " + lastName + " it is great to see you again.";
+            return "Welcome, " + firstName + " " + lastName + ", it is great to see you again.";
         } else {
             return "Username or password incorrect, please try again.";
 
