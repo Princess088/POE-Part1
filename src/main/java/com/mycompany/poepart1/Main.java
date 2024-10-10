@@ -4,7 +4,7 @@
 
 package com.mycompany.poepart1;
 import java.util.Scanner;
-import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -42,7 +42,7 @@ import javax.swing.JOptionPane;
                 // Get the number of tasks from the user
         int numTasks = Integer.parseInt(JOptionPane.showInputDialog("How many tasks do you want to enter?"));
 
-        // Create an array of Task objects to store the tasks
+        // Create an object for the tasks
         Task[] tasks = new Task[numTasks];
 
         // Get the details of each task from the user
