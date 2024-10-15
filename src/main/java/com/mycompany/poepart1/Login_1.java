@@ -15,7 +15,7 @@ class Login {
     private String password;
     private String firstName;
     private String lastName;
-    
+
     //Initilise a new object with the new variable
     public Login(String username, String password, String firstName, String lastName) {
         this.username = username;
@@ -38,7 +38,7 @@ class Login {
     }
     
     //Checks whether the user has registered successfully or not
-    public String registerUser() {
+    public String registerUser(String username, String password, String firstName, String lastName) {
         if (!checkUserName()) {
             return "Username is not correctly formatted, please ensure that your username contains an underscore and is no more than 5 characters in length.";
         }
