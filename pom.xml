@@ -43,4 +43,5 @@
         <maven.compiler.target>21</maven.compiler.target>
         <exec.mainClass>com.mycompany.poepart1.POEPart1</exec.mainClass>
     </properties>
+    <name>POEPart1</name>
 </project>
