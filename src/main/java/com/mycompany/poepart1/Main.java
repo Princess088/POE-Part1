@@ -4,6 +4,7 @@
 
 package com.mycompany.poepart1;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,9 +38,77 @@ import java.util.Scanner;
         //Implementation of method above
         boolean loginSuccess = login.loginUser(inputUsername, inputPassword);
         System.out.println(login.returnLoginStatus(loginSuccess));
+        
+                // Initialize variables
+        int numTasks = 0;
+        Task[] tasks = null;
+        int totalHours = 0;
+        boolean loggedIn = false;
 
-
-       
-    }
+        // Login prompt
+        if (loginSuccess) {
+            loggedIn = true;
         }
+
+        
+        while (loggedIn) {
+            // Display welcome message
+            JOptionPane.showMessageDialog(null, "Welcome to EasyKanban!");
+
+        // Display menu options
+        String menu = "Select an option:\n" +
+                      "1. Add tasks\n" +
+                      "2. Show Report\n" +
+                      "3. Quit";
+        int choice = Integer.parseInt(JOptionPane.showInputDialog(menu));
+
+        switch (choice) {
+            case 1:
+               //Prompt the user to enter the number of tasks
+                numTasks = Integer.parseInt(JOptionPane.showInputDialog("Enter the number of tasks:"));
+        tasks = new Task[numTasks];
+
+        //Add tasks
+        for (int i = 0; i < numTasks; i++) {
+            // Prompt the user to enter task details
+            String taskName = JOptionPane.showInputDialog("Enter task name:");
+            String taskDescription = JOptionPane.showInputDialog("Enter task description:");
+            String developerDetails = JOptionPane.showInputDialog("Enter developer details:");
+            int taskDuration = Integer.parseInt(JOptionPane.showInputDialog("Enter task duration (hours):"));
+
+        // Create task object
+        Task task = new Task(taskName, taskDescription, developerDetails, taskDuration);
+
+        // Validate task description
+        if (task.checkTaskDescription()) {
+            //Create and array for task
+            tasks[i] = task;
+            // Display task details
+            JOptionPane.showMessageDialog(null, task.createTaskID());
+            //Write the total hours
+            totalHours += task.getTaskDuration();
+        } else {
+            JOptionPane.showMessageDialog(null, "Please enter a task description of less than 50 characters.");
+            }
+        }
+          break;
+        case 2:
+            // Display report message
+            JOptionPane.showMessageDialog(null, "Coming Soon!");
+          break;
+        case 3:
+            // Quit application
+            loggedIn = false;
+          break;
+        default:
+            JOptionPane.showMessageDialog(null, "Invalid choice.");
+          break;
+            }
+        }
+
+        // Display total hours
+        JOptionPane.showMessageDialog(null, "Total hours: " + totalHours);
+    }
+}
+
 
