@@ -75,7 +75,11 @@ import javax.swing.JOptionPane;
             String taskDescription = JOptionPane.showInputDialog("Enter task description:");
             String developerDetails = JOptionPane.showInputDialog("Enter developer details:");
             int taskDuration = Integer.parseInt(JOptionPane.showInputDialog("Enter task duration (hours):"));
-
+            
+           // Task status selection
+           String[] taskStatusOptions = {"To Do", "Doing", "Done"};
+        int statusChoice = JOptionPane.showOptionDialog(null, "Select Task Status", "Task Status", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, taskStatusOptions, taskStatusOptions[0]);
+            String taskStatus = taskStatusOptions[statusChoice];
         // Create task object
         Task task = new Task(taskName, taskDescription, developerDetails, taskDuration);
 

@@ -10,17 +10,30 @@ package com.mycompany.poepart1;
  */
 class Task {
     private String taskName;
+    private int taskNumber;
     private String taskDescription;
     private String developerDetails;
-    private int taskDuration;
-    private int taskNumber;
+    private int duration;
+    private String taskID;
+    private String taskStatus;
+    
 
-    public Task(String taskName, String taskDescription, String developerDetails, int taskDuration) {
+    //Initialize declarations
+    public Task(String taskName, String taskDescription, String developerDetails, int duration) {
         this.taskName = taskName;
         this.taskDescription = taskDescription;
         this.developerDetails = developerDetails;
-        this.taskDuration = taskDuration;
+        this.duration = duration;
+        this.taskNumber = 0; 
+        this.taskID = createTaskID();
+        this.taskStatus = "To Do"; 
     }
+
+    // Check task description length
+    public static boolean checkTaskDescription(String taskDescription) {
+        return taskDescription.length() <= 50;
+    }
+
 
     //Checks if the task description is less than 50 characters; return true if the description is valid, false otherwise.//
     public boolean checkTaskDescription() {
@@ -32,7 +45,19 @@ class Task {
     }
   //Returns the task duration;return the task duration in hours.
     public int getTaskDuration() {
-        return taskDuration;
+        int taskDuration;
+        return 0;
+    }
+    
+     // Get full task details
+    public String getFullTaskDetails() {
+        return "Task Status: " + taskStatus + "\n" +
+               "Developer Details: " + developerDetails + "\n" +
+               "Task Number: " + taskNumber + "\n" +
+               "Task Name: " + taskName + "\n" +
+               "Task Description: " + taskDescription + "\n" +
+               "Task ID: " + taskID + "\n" +
+               "Duration: " + duration + " hours";
     }
 }
 
