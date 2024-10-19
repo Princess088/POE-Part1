@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * @author RC_Student_lab
  */
         public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args ){
         //Create an object for scanner
         Scanner scanner = new Scanner(System.in);
 
@@ -80,8 +80,13 @@ import javax.swing.JOptionPane;
            String[] taskStatusOptions = {"To Do", "Doing", "Done"};
         int statusChoice = JOptionPane.showOptionDialog(null, "Select Task Status", "Task Status", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, taskStatusOptions, taskStatusOptions[0]);
             String taskStatus = taskStatusOptions[statusChoice];
+              
         // Create task object
         Task task = new Task(taskName, taskDescription, developerDetails, taskDuration);
+        // Display report with all task details
+        JOptionPane.showMessageDialog(null, task.getFullTaskDetails());
+        System.out.println("Task successfully captured.");
+
 
         // Validate task description
         if (task.checkTaskDescription()) {
@@ -107,12 +112,16 @@ import javax.swing.JOptionPane;
         default:
             JOptionPane.showMessageDialog(null, "Invalid choice.");
           break;
+         
             }
-        }
 
+    
+       
+        
         // Display total hours
         JOptionPane.showMessageDialog(null, "Total hours: " + totalHours);
     }
 }
-
-
+        }
+    
+        
