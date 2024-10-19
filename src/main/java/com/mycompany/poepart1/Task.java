@@ -26,15 +26,9 @@ class Task {
         this.duration = duration;
         this.taskNumber = 0; 
         this.taskID = createTaskID();
-        this.taskStatus = "To Do"; 
+        this.taskStatus = " "; 
     }
-
-    // Check task description length
-    public static boolean checkTaskDescription(String taskDescription) {
-        return taskDescription.length() <= 50;
-    }
-
-
+    
     //Checks if the task description is less than 50 characters; return true if the description is valid, false otherwise.//
     public boolean checkTaskDescription() {
         return taskDescription.length() <= 50;
