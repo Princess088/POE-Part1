@@ -41,7 +41,7 @@ import javax.swing.JOptionPane;
         
                 // Initialize variables
         int numTasks = 0;
-        Task[] tasks = null;
+        Task[] tasks = new Task[numTasks];
         int totalHours = 0;
         boolean loggedIn = false;
 
@@ -108,11 +108,10 @@ import javax.swing.JOptionPane;
         case 3:
             // Quit application
             loggedIn = false;
+            JOptionPane.showMessageDialog(null, "Logged out successfully.");
           break;
         default:
-            JOptionPane.showMessageDialog(null, "Invalid choice.");
-          break;
-         
+            
             }
        
     

@@ -39,7 +39,6 @@ class Task {
     }
   //Returns the task duration;return the task duration in hours.
     public int getTaskDuration() {
-        int taskDuration;
         return duration; 
     }
     
