@@ -26,7 +26,7 @@ class Task {
         this.duration = duration;
         this.taskNumber = 0; 
         this.taskID = createTaskID();
-        this.taskStatus = " "; 
+        this.taskStatus = "To Do"; 
     }
     
     //Checks if the task description is less than 50 characters; return true if the description is valid, false otherwise.//
@@ -40,7 +40,7 @@ class Task {
   //Returns the task duration;return the task duration in hours.
     public int getTaskDuration() {
         int taskDuration;
-        return 0;
+        return duration; 
     }
     
      // Get full task details

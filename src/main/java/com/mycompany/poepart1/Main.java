@@ -114,9 +114,11 @@ import javax.swing.JOptionPane;
           break;
          
             }
-
-    
        
+    
+       for(Task task : tasks){
+            task.getTaskDuration();
+        }
         
         // Display total hours
         JOptionPane.showMessageDialog(null, "Total hours: " + totalHours);
