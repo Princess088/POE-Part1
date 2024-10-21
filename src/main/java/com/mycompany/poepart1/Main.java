@@ -56,7 +56,7 @@ import javax.swing.JOptionPane;
             JOptionPane.showMessageDialog(null, "Welcome to EasyKanban!");
 
         // Display menu options
-        String menu = "Select an option:\n" +
+        String menu =   "Select an option:\n" +
                       "1. Add tasks\n" +
                       "2. Show Report\n" +
                       "3. Quit";
@@ -78,11 +78,11 @@ import javax.swing.JOptionPane;
             
            // Task status selection
            String[] taskStatusOptions = {"To Do", "Doing", "Done"};
-        int statusChoice = JOptionPane.showOptionDialog(null, "Select Task Status", "Task Status", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, taskStatusOptions, taskStatusOptions[0]);
+        int statusChoice = JOptionPane.showOptionDialog(null, "Select Task Status", "Task Status", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, taskStatusOptions, taskStatusOptions[2]);
             String taskStatus = taskStatusOptions[statusChoice];
               
         // Create task object
-        Task task = new Task(taskName, taskDescription, developerDetails, taskDuration);
+        Task task = new Task(taskName, taskDescription, developerDetails, taskDuration,taskStatus);
         // Display report with all task details
         JOptionPane.showMessageDialog(null, task.getFullTaskDetails());
         System.out.println("Task successfully captured.");
@@ -94,7 +94,7 @@ import javax.swing.JOptionPane;
             tasks[i] = task;
             // Display task details
             JOptionPane.showMessageDialog(null, task.createTaskID());
-            //Write the total hours
+            //Write the total hours-
             totalHours += task.getTaskDuration();
         } else {
             JOptionPane.showMessageDialog(null, "Please enter a task description of less than 50 characters.");
@@ -124,5 +124,4 @@ import javax.swing.JOptionPane;
     }
 }
         }
-    
-        
+   
