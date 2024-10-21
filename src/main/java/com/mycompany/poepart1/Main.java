@@ -4,6 +4,7 @@
 
 package com.mycompany.poepart1;
 import java.util.Scanner;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,6 +15,9 @@ import javax.swing.JOptionPane;
     public static void main(String[] args ){
         //Create an object for scanner
         Scanner scanner = new Scanner(System.in);
+        
+        final JDialog dialog = new JDialog();
+        dialog.setAlwaysOnTop(true);
 
         //Prompt the user to enter their details
         System.out.print("Enter first name: ");
@@ -44,6 +48,7 @@ import javax.swing.JOptionPane;
         Task[] tasks = new Task[numTasks];
         int totalHours = 0;
         boolean loggedIn = false;
+        
 
         // Login prompt
         if (loginSuccess) {
@@ -85,7 +90,7 @@ import javax.swing.JOptionPane;
         Task task = new Task(taskName, taskDescription, developerDetails, taskDuration,taskStatus);
         // Display report with all task details
         JOptionPane.showMessageDialog(null, task.getFullTaskDetails());
-        System.out.println("Task successfully captured.");
+        JOptionPane.showMessageDialog(null, "Task successfully captured.");
 
 
         // Validate task description
@@ -117,11 +122,16 @@ import javax.swing.JOptionPane;
     
        for(Task task : tasks){
             task.getTaskDuration();
+            
+
         }
         
         // Display total hours
         JOptionPane.showMessageDialog(null, "Total hours: " + totalHours);
+         
+        dialog.dispose();
     }
 }
-        }
-   
+    
+    }
+        
