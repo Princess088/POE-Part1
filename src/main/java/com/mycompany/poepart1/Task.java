@@ -16,17 +16,18 @@ class Task {
     private int duration;
     private String taskID;
     private String taskStatus;
+    private static int taskCounter = 0;
     
 
     //Initialize declarations
-    public Task(String taskName, String taskDescription, String developerDetails, int duration, String taskStatus) {
+     public void setTaskDetails(String taskName, String taskDescription, String developerDetails, int duration, String taskStatus) {
         this.taskName = taskName;
         this.taskDescription = taskDescription;
         this.developerDetails = developerDetails;
         this.duration = duration;
-        this.taskNumber = 0; 
+        this.taskStatus = taskStatus;
         this.taskID = createTaskID();
-        this.taskStatus = taskStatus; 
+        taskCounter++;
     }
     
     //Checks if the task description is less than 50 characters; return true if the description is valid, false otherwise.//

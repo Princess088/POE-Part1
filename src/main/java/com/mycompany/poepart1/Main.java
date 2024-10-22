@@ -77,34 +77,58 @@ import javax.swing.JOptionPane;
         for (int i = 0; i < numTasks; i++) {
             // Prompt the user to enter task details
             String taskName = JOptionPane.showInputDialog("Enter task name:");
-            String taskDescription = JOptionPane.showInputDialog("Enter task description:");
+            
+            String taskDescription = "";
+            boolean validDescription = false;
+
+            // Loop until a valid description is entered
+            while (!validDescription) {
+                   taskDescription = JOptionPane.showInputDialog("Enter task description:");
+                if (taskDescription.length() <= 50) {
+                     validDescription = true;
+                } else {
+            JOptionPane.showMessageDialog(null, "Please enter a task description of less than 50 characters.");
+                            }
+                        }
+           
             String developerDetails = JOptionPane.showInputDialog("Enter developer details:");
             int taskDuration = Integer.parseInt(JOptionPane.showInputDialog("Enter task duration (hours):"));
             
            // Task status selection
            String[] taskStatusOptions = {"To Do", "Doing", "Done"};
-        int statusChoice = JOptionPane.showOptionDialog(null, "Select Task Status", "Task Status", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, taskStatusOptions, taskStatusOptions[2]);
+        int statusChoice = JOptionPane.showOptionDialog(null, "Select Task Status", "Task Status", 
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, taskStatusOptions, 
+                taskStatusOptions[2]);
             String taskStatus = taskStatusOptions[statusChoice];
               
-        // Create task object
-        Task task = new Task(taskName, taskDescription, developerDetails, taskDuration,taskStatus);
+        
+        // Create task object using parameters
+        Task task = new Task();
+        task.setTaskDetails(taskName, taskDescription, developerDetails, taskDuration, taskStatus);
         // Display report with all task details
         JOptionPane.showMessageDialog(null, task.getFullTaskDetails());
         JOptionPane.showMessageDialog(null, "Task successfully captured.");
 
 
-        // Validate task description
-        if (task.checkTaskDescription()) {
-            //Create and array for task
-            tasks[i] = task;
-            // Display task details
-            JOptionPane.showMessageDialog(null, task.createTaskID());
-            //Write the total hours-
-            totalHours += task.getTaskDuration();
-        } else {
-            JOptionPane.showMessageDialog(null, "Please enter a task description of less than 50 characters.");
-            }
+        
+        //Create and array for task
+        tasks[i] = task;
+        // Display task details
+        JOptionPane.showMessageDialog(null, task.createTaskID());
+        //Write the total hours-
+        totalHours += task.getTaskDuration();
         }
+         // Display all task details after the last task is added
+        StringBuilder allTasksDetails = new StringBuilder("All Tasks Details:\n");
+        for (Task task : tasks) {
+        allTasksDetails.append(task.getFullTaskDetails()).append("\n\n");
+        }
+        JOptionPane.showMessageDialog(null, allTasksDetails.toString());
+        
+        
+        JOptionPane.showMessageDialog(null, "Total hours: " + totalHours);
+        
+        
           break;
         case 2:
             // Display report message
@@ -127,11 +151,12 @@ import javax.swing.JOptionPane;
         }
         
         // Display total hours
-        JOptionPane.showMessageDialog(null, "Total hours: " + totalHours);
-         
-        dialog.dispose();
-    }
-}
+        //JOptionPane.showMessageDialog(null, "Total hours: " + totalHours);
+        
+       dialog.dispose();
+        
     
     }
+}
+        }
         
