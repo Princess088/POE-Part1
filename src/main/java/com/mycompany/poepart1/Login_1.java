@@ -17,12 +17,24 @@ class Login {
     private String lastName;
     
     //Initilise a new object with the new variable
-    public Login(String username, String password, String firstName, String lastName) {
+     // Setters for user details
+    public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    
    
 
     //Method to check whether the username has all that it should contain

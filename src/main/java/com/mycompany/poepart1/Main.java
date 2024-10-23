@@ -16,21 +16,26 @@ import javax.swing.JOptionPane;
         //Create an object for scanner
         Scanner scanner = new Scanner(System.in);
         
+        Login login = new Login();
+        
         final JDialog dialog = new JDialog();
         dialog.setAlwaysOnTop(true);
 
         //Prompt the user to enter their details
         System.out.print("Enter first name: ");
         String firstName = scanner.next();
+        login.setFirstName(firstName);
         System.out.print("Enter last name: ");
         String lastName = scanner.next();
+        login.setLastName(lastName);
         System.out.print("Enter username: ");
         String username = scanner.next();
+        login.setUsername(username);
         System.out.print("Enter password: ");
         String password = scanner.next();
+        login.setPassword(password);
         
-        //An object for Login
-        Login login = new Login(username, password, firstName, lastName);
+       
         System.out.print(login.registerUser());
         
         //Method for the user to log in with after being registered
