@@ -51,7 +51,7 @@ class Login {
     }
     
     //Checks whether the user has registered successfully or not
-    public String registerUser() {
+    public String registerUser(String username, String password) {
         if (!checkUserName()) {
             return "Username is not correctly formatted, please ensure that your username contains an underscore and is no more than 5 characters in length.";
         }

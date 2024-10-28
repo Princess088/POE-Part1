@@ -35,8 +35,10 @@ import javax.swing.JOptionPane;
         String password = scanner.next();
         login.setPassword(password);
         
-       
-        System.out.print(login.registerUser());
+     
+        String result = login.registerUser(username, password);
+        System.out.print(result);
+        //System.out.print(login.registerUser());
         
         //Method for the user to log in with after being registered
         System.out.print("Login with username:");
