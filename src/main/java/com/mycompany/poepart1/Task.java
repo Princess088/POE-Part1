@@ -38,10 +38,32 @@ class Task {
     public String createTaskID() {
         return taskName.substring(0, 2) + ":" + taskNumber + ":" + developerDetails.substring(developerDetails.length() - 3);
     }
-  //Returns the task duration;return the task duration in hours.
+    
+    // Getters for task properties
+    //Returns the task duration;return the task duration in hours.
     public int getTaskDuration() {
         return duration; 
     }
+
+    public String getTaskStatus() {
+        return taskStatus;
+    }
+
+    public String getDeveloper() {
+        return developerDetails;
+    }
+
+    public String getTaskName() {
+        return taskName;
+    }
+
+    public int getTaskNumber() {
+        return taskNumber;
+    }
+    public String getTaskID() {
+        return taskID;
+    }
+   
     
      // Get full task details
     public String getFullTaskDetails() {

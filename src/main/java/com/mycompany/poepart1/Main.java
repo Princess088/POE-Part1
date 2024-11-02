@@ -6,17 +6,80 @@ package com.mycompany.poepart1;
 import java.util.Scanner;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author RC_Student_lab
  */
-        public class Main {
+public class Main {
+     private List<Task> tasks = new ArrayList<>();
+
+    public void addTask(Task task) {
+        tasks.add(task);
+    }
+    
+    public Task findTaskByName(String taskName) {
+        for (Task task : tasks) {
+            if (task.getTaskName().equalsIgnoreCase(taskName)) {
+                return task;
+            }
+        }
+        return null;
+    }
+
+    public List<Task> findTasksByDeveloper(String developer) {
+        List<Task> developerTasks = new ArrayList<>();
+        for (Task task : tasks) {
+            if (task.getDeveloper().equalsIgnoreCase(developer)) {
+                developerTasks.add(task);
+            }
+        }
+        return developerTasks;
+    }
+    
+       public void deleteTask(String taskName) {
+        tasks.removeIf(task -> task.getTaskName().equalsIgnoreCase(taskName));
+    }
+        public void displayTasksByStatus(String status) {
+        System.out.println("Tasks with status '" + status + "':");
+        for (Task task : tasks) {
+            if (task.getTaskStatus().equalsIgnoreCase(status)) {
+                System.out.println(task.getFullTaskDetails());
+            }
+        }
+    }
+ public void displayLongestTask() {
+        if (tasks.isEmpty()) {
+            System.out.println("No tasks available.");
+            return;
+        }
+
+        Task longestTask = tasks.get(0);
+        for (Task task : tasks) {
+            if (task.getTaskDuration() > longestTask.getTaskDuration()) {
+                longestTask = task;
+            }
+             JOptionPane.showMessageDialog(null, "Longest Task:\n" + longestTask.getDeveloper() + " - " + longestTask.getTaskDuration() + " hours", "Longest Task", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+        public void displayReport() {
+        System.out.println("Task Report:");
+        for (Task task : tasks) {
+            System.out.println(task.getFullTaskDetails());
+        
+    }
+    }
+            
+            
     public static void main(String[] args ){
         //Create an object for scanner
         Scanner scanner = new Scanner(System.in);
         
         Login login = new Login();
+        
+         Main mainApp = new Main();
         
         final JDialog dialog = new JDialog();
         dialog.setAlwaysOnTop(true);
@@ -68,12 +131,16 @@ import javax.swing.JOptionPane;
             JOptionPane.showMessageDialog(null, "Welcome to EasyKanban!");
 
         // Display menu options
-        String menu =   "Select an option:\n" +
-                      "1. Add tasks\n" +
-                      "2. Show Report\n" +
-                      "3. Quit";
-        int choice = Integer.parseInt(JOptionPane.showInputDialog(menu));
-
+        String menu = "Select an option:\n" +
+                          "1. Add tasks\n" +
+                          "2. Show Report\n" +
+                          "3. Show tasks by status\n" +
+                          "4. Show longest task\n" +
+                          "5. Delete a task\n" +
+                          "6. Quit";
+        //int choice = Integer.parseInt(JOptionPane.showInputDialog(menu));
+        int choice = Integer.parseInt(JOptionPane.showInputDialog(null, menu, "***Main Menu***", JOptionPane.QUESTION_MESSAGE));
+        
         switch (choice) {
             case 1:
                //Prompt the user to enter the number of tasks
@@ -112,6 +179,7 @@ import javax.swing.JOptionPane;
         // Create task object using parameters
         Task task = new Task();
         task.setTaskDetails(taskName, taskDescription, developerDetails, taskDuration, taskStatus);
+        mainApp.addTask(task);
         // Display report with all task details
         JOptionPane.showMessageDialog(null, task.getFullTaskDetails());
         JOptionPane.showMessageDialog(null, "Task successfully captured.");
@@ -140,30 +208,40 @@ import javax.swing.JOptionPane;
         case 2:
             // Display report message
             JOptionPane.showMessageDialog(null, "Coming Soon!");
+              mainApp.displayReport();
           break;
-        case 3:
+           case 3:
+                String status = JOptionPane.showInputDialog(null, "Enter status (To Do / Doing / Done):", "Filter by Status", JOptionPane.QUESTION_MESSAGE);
+                mainApp.displayTasksByStatus(status);
+                    break;
+                case 4:
+                    mainApp.displayLongestTask();
+                    break;
+                case 5:
+                    String taskName = JOptionPane.showInputDialog("Enter task name to delete:");
+                    mainApp.deleteTask(taskName);
+                    JOptionPane.showMessageDialog(null, "Task deleted if it existed.");
+                    break;
+        case 6:
             // Quit application
             loggedIn = false;
             JOptionPane.showMessageDialog(null, "Logged out successfully.");
           break;
         default:
-            
+             JOptionPane.showMessageDialog(null, "Invalid option.");
             }
        
     
        for(Task task : tasks){
             task.getTaskDuration();
-            
-
-        }
-        
-        // Display total hours
-        //JOptionPane.showMessageDialog(null, "Total hours: " + totalHours);
+       
+                    }
         
        dialog.dispose();
+       
+       
         
     
     }
 }
         }
-        

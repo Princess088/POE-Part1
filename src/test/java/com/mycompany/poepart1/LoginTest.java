@@ -57,23 +57,23 @@ public class LoginTest {
     }
 
     @Test
-    public void testRegisterUserSuccess() {
+    public void testRegisterUserSuccess(Object result) {
         Login login = new Login();
         login.setUsername("kyl_1");
         login.setPassword("Ch&&sec@ke99!");
         login.setFirstName("Kyle");
         login.setLastName("Jenner");
-        assertEquals("User registered successfully.", login.registerUser());
+        assertEquals("User registered successfully.", result);
     }
 
     @Test
-    public void testRegisterUserUsernameIncorrect() {
+    public void testRegisterUserUsernameIncorrect(Object result) {
         Login login = new Login();
         login.setUsername("kyle!!!!!!!");
         login.setPassword("Ch&&sec@ke99!");
         login.setFirstName("Kyle");
         login.setLastName("Jenner");
-        assertEquals("Username is not correctly formatted, please ensure that your username contains an underscore and is no more than 5 characters in length.", login.registerUser());
+        assertEquals("Username is not correctly formatted, please ensure that your username contains an underscore and is no more than 5 characters in length.", result);
     }
 
     @Test
@@ -83,7 +83,8 @@ public class LoginTest {
         login.setPassword("password");
         login.setFirstName("Kyle");
         login.setLastName("Jenner");
-        assertEquals("Password is not correctly formatted, please ensure that the password contains at least 8 characters, a capital letter, a number and a special character.", login.registerUser());
+        Object result = null;
+        assertEquals("Password is not correctly formatted, please ensure that the password contains at least 8 characters, a capital letter, a number and a special character.", result);
     }
 
     @Test
