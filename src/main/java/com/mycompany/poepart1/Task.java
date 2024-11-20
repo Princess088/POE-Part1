@@ -16,8 +16,8 @@ class Task {
     private int duration;
     private String taskID;
     private String taskStatus;
-    private static int taskCounter = 0;
-    
+    private static int taskCounter = 5;
+
 
     //Initialize declarations
      public void setTaskDetails(String taskName, String taskDescription, String developerDetails, int duration, String taskStatus) {
@@ -27,7 +27,7 @@ class Task {
         this.duration = duration;
         this.taskStatus = taskStatus;
         this.taskID = createTaskID();
-        taskCounter++;
+        taskNumber = ++taskCounter;
     }
     
     //Checks if the task description is less than 50 characters; return true if the description is valid, false otherwise.//
@@ -36,7 +36,7 @@ class Task {
     }
   //Creates a unique task ID based on task name and developer details ;return the generated task ID.
     public String createTaskID() {
-        return taskName.substring(0, 2) + ":" + taskNumber + ":" + developerDetails.substring(developerDetails.length() - 3);
+        return taskName.substring(0, 2).toUpperCase() + ":" + taskCounter + ":" + developerDetails.substring(developerDetails.length() - 3).toUpperCase();
     }
     
     // Getters for task properties

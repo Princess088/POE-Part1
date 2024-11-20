@@ -123,6 +123,7 @@ public class Main {
         JOptionPane.showMessageDialog(null, report.toString());
     }
 }
+
     
     public void displayTasksByStatus(String status) {
     StringBuilder report = new StringBuilder("Tasks with status '" + status + "':\n");
@@ -169,11 +170,11 @@ public class Main {
         login.setPassword(password);
         
      
-        String result = login.registerUser(username, password);
-        System.out.print(result);
-        //System.out.print(login.registerUser());
+        String registrationResult = login.registerUser(firstName, lastName, username, password);
+        System.out.println(registrationResult);
         
         //Method for the user to log in with after being registered
+     if (registrationResult.equals("User registered successfully.")) {
         System.out.print("Login with username:");
         String inputUsername = scanner.next();
         System.out.print("Login with password:");
@@ -183,9 +184,10 @@ public class Main {
         boolean loginSuccess = login.loginUser(inputUsername, inputPassword);
         System.out.println(login.returnLoginStatus(loginSuccess));
         
-                // Initialize variables
+        // Initialize variables
         int numTasks = 0;
-        Task[] tasks = new Task[numTasks];
+        //Task[] tasks = new Task[numTasks];
+        List<Task> tasks = mainApp.tasks;
         int totalHours = 0;
         boolean loggedIn = false;
         
@@ -194,12 +196,10 @@ public class Main {
         if (loginSuccess) {
             loggedIn = true;
         }
-
-        
-        while (loggedIn) {
             // Display welcome message
             JOptionPane.showMessageDialog(null, "Welcome to EasyKanban!");
-
+        
+        while (loggedIn) {
         // Display menu options
         String menu = "Select an option:\n" +
                           "1. Add tasks\n" +
@@ -218,9 +218,11 @@ public class Main {
         switch (choice) {
             case 1:
                //Prompt the user to enter the number of tasks
-                numTasks = Integer.parseInt(JOptionPane.showInputDialog("Enter the number of tasks:"));
-        tasks = new Task[numTasks];
-
+                numTasks = Integer.parseInt(JOptionPane.showInputDialog("Enter the number of tasks (maximum 5):"));
+            if (numTasks > 5) {
+                JOptionPane.showMessageDialog(null, "You can only add up to 5 tasks.");
+                numTasks = 5;
+}
         //Add tasks
         for (int i = 0; i < numTasks; i++) {
             // Prompt the user to enter task details
@@ -259,7 +261,7 @@ public class Main {
         JOptionPane.showMessageDialog(null, "Task successfully captured.");
 
         //Create and array for task
-        tasks[i] = task;
+       // tasks[i] = task;
         // Display task details
         JOptionPane.showMessageDialog(null, task.createTaskID());
         //Write the total hours-
@@ -267,7 +269,7 @@ public class Main {
         }
          // Display all task details after the last task is added
         StringBuilder allTasksDetails = new StringBuilder("All Tasks Details:\n");
-        for (Task task : tasks) {
+        for (Task task : mainApp.tasks) {
         allTasksDetails.append(task.getFullTaskDetails()).append("\n\n");
         }
         JOptionPane.showMessageDialog(null, allTasksDetails.toString());
@@ -317,8 +319,8 @@ public class Main {
             }
        
     
-       for(Task task : tasks){
-            task.getTaskDuration();
+       //for(Task task : tasks){
+            //task.getTaskDuration();
        
                     }
         

@@ -21,11 +21,6 @@ public class TaskTest {
     
     private Task task;
 
-    @BeforeEach
-    void setUp() {
-        task = new Task();
-    }
-
     @Test
     void testSetTaskDetails_ValidDescription() {
         // Arrange

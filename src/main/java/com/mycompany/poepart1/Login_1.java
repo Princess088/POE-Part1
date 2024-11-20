@@ -33,9 +33,7 @@ class Login {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
     
-   
 
     //Method to check whether the username has all that it should contain
     public boolean checkUserName() {
@@ -51,7 +49,15 @@ class Login {
     }
     
     //Checks whether the user has registered successfully or not
-    public String registerUser(String username, String password) {
+    //public String registerUser(String username, String password) {
+        // Method to register a user
+    public String registerUser(String firstName, String lastName, String username, String password) {
+        // Set the fields with the provided details
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        
         if (!checkUserName()) {
             return "Username is not correctly formatted, please ensure that your username contains an underscore and is no more than 5 characters in length.";
         }
